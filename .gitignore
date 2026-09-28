@@ -1,0 +1,12 @@
+# Godot cache and import files
+.godot/
+*.translation
+
+# Node.js dependencies
+node_modules/
+
+# macOS & OS artifacts
+.DS_Store
+._*
+*.swp
+*~

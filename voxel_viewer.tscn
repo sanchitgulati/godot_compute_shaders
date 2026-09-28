@@ -1,0 +1,504 @@
+[gd_scene format=3 uid="uid://bvox7view001"]
+
+[ext_resource type="Script" uid="uid://bri022ls8vtby" path="res://voxel_viewer.gd" id="1_viewer"]
+[ext_resource type="Script" uid="uid://b0mqblwn6vpym" path="res://camera_controller.gd" id="2_cam"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud"]
+bg_color = Color(0.08, 0.1, 0.14, 0.9)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 6
+
+[node name="VoxelViewer" type="Control" unique_id=351734476]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_viewer")
+
+[node name="CameraController" type="Node" parent="." unique_id=885003083]
+script = ExtResource("2_cam")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1011027674]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="UI" type="Control" parent="." unique_id=52612131]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI" unique_id=2141683886]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 390.0
+offset_bottom = -16.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PanelContainer" unique_id=831349294]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelContainer/MarginContainer" unique_id=851342864]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TitleLabel" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer" unique_id=407968874]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Minecraft GPU Voxel Raytracer"
+
+[node name="StatsLabel" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer" unique_id=198064185]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 11
+text = "Map: Loading... | FPS: --"
+autowrap_mode = 3
+
+[node name="HSeparatorTop" type="HSeparator" parent="UI/PanelContainer/MarginContainer/VBoxContainer" unique_id=646798840]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer" unique_id=1393738679]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+
+[node name="ControlsVBox" type="VBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=322269146]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 7
+
+[node name="HBoxMap" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=1250596291]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxMap" unique_id=1877013658]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "Map:"
+
+[node name="MapSelector" type="OptionButton" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxMap" unique_id=966599045]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxRes" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=471199765]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxRes" unique_id=1432244878]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "Resolution:"
+
+[node name="ResSelector" type="OptionButton" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxRes" unique_id=1266460734]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxScale" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=275273290]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxScale" unique_id=702918121]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "UI Scale:"
+
+[node name="ScaleSelector" type="OptionButton" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxScale" unique_id=32832613]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxCamera" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=1661505253]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxCamera" unique_id=356924660]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "Camera:"
+
+[node name="CamModeSelector" type="OptionButton" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxCamera" unique_id=897269724]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxControls" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=1570450965]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AutoOrbitCheck" type="CheckBox" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxControls" unique_id=1060015478]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Auto-Orbit"
+
+[node name="ResetButton" type="Button" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxControls" unique_id=1149616111]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 11
+text = "Reset View"
+
+[node name="HSeparator1" type="HSeparator" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=1587765785]
+layout_mode = 2
+
+[node name="SectionColor" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=1796898969]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.75, 0.4, 1)
+theme_override_font_sizes/font_size = 11
+text = "COLOR & GAMMA CONTROLS"
+
+[node name="HBoxSat" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=253301437]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxSat" unique_id=513419568]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "Saturation:"
+
+[node name="SatSlider" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxSat" unique_id=1758877635]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 2.5
+step = 0.05
+value = 1.35
+
+[node name="SatValLabel" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxSat" unique_id=923035959]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "1.35"
+
+[node name="HBoxGamma" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=2099639222]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxGamma" unique_id=286497559]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "Gamma:"
+
+[node name="GammaSlider" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxGamma" unique_id=464221523]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 3.0
+step = 0.05
+value = 2.2
+
+[node name="GammaValLabel" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxGamma" unique_id=1132885821]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "2.20"
+
+[node name="HBoxContrast" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=1456053689]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxContrast" unique_id=120224956]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "Contrast:"
+
+[node name="ContrastSlider" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxContrast" unique_id=2130592350]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.5
+max_value = 1.8
+step = 0.05
+value = 1.15
+
+[node name="ContrastValLabel" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxContrast" unique_id=1986267881]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "1.15"
+
+[node name="HBoxExposure" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=1108705157]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxExposure" unique_id=1932590901]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "Exposure:"
+
+[node name="ExposureSlider" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxExposure" unique_id=769353948]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.3
+max_value = 2.5
+step = 0.05
+value = 1.1
+
+[node name="ExposureValLabel" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxExposure" unique_id=39235840]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "1.10"
+
+[node name="HSeparator2" type="HSeparator" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=1482247840]
+layout_mode = 2
+
+[node name="SectionLight" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=679345556]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.75, 0.4, 1)
+theme_override_font_sizes/font_size = 11
+text = "LIGHTING & SHADOWS"
+
+[node name="HBoxSun" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=2001299556]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxSun" unique_id=1108504180]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "Sun Angle:"
+
+[node name="SunSlider" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxSun" unique_id=1460859313]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 6.28
+step = 0.05
+value = 0.65
+
+[node name="SunValLabel" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxSun" unique_id=493013537]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "0.65"
+
+[node name="HBoxSunInt" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=115415548]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxSunInt" unique_id=1772312211]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "Sun Power:"
+
+[node name="SunIntSlider" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxSunInt" unique_id=120585989]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.5
+max_value = 3.5
+step = 0.1
+value = 2.0
+
+[node name="SunIntValLabel" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxSunInt" unique_id=528736537]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "2.00"
+
+[node name="HBoxAmbient" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=2004909305]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxAmbient" unique_id=7648638]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "Ambient:"
+
+[node name="AmbSlider" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxAmbient" unique_id=1175534498]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.05
+max_value = 0.7
+step = 0.02
+value = 0.29
+
+[node name="AmbValLabel" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxAmbient" unique_id=1397332350]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "0.28"
+
+[node name="HBoxEdge" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=1936268500]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxEdge" unique_id=1352239710]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "Voxel Edge:"
+
+[node name="EdgeSlider" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxEdge" unique_id=1273521976]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 0.45
+
+[node name="EdgeValLabel" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxEdge" unique_id=318558192]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "45%"
+
+[node name="HSeparator3" type="HSeparator" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=191776121]
+layout_mode = 2
+
+[node name="SectionToggles" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=984285958]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.75, 0.4, 1)
+theme_override_font_sizes/font_size = 11
+text = "RAYTRACING EFFECTS"
+
+[node name="HBoxToggles" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=656042851]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ShadowsCheck" type="CheckBox" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxToggles" unique_id=1545904305]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+button_pressed = true
+text = "Shadows"
+
+[node name="ReflCheck" type="CheckBox" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxToggles" unique_id=1389062069]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+button_pressed = true
+text = "Reflections"
+
+[node name="FloorCheck" type="CheckBox" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxToggles" unique_id=1787103050]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+button_pressed = true
+text = "Floor"
+
+[node name="StudioCheck" type="CheckBox" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxToggles" unique_id=1702764171]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Studio"
+
+[node name="HBoxPathTracing" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=168679860]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AccumCheck" type="CheckBox" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxPathTracing" unique_id=798294940]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+button_pressed = true
+text = "Accumulate (SPP)"
+
+[node name="GICheck" type="CheckBox" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxPathTracing" unique_id=371313615]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+button_pressed = true
+text = "Global Illum (GI)"
+
+[node name="HBoxMaxSPP" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=669701206]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxMaxSPP" unique_id=1395461380]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "Max SPP:"
+
+[node name="MaxSPPSlider" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxMaxSPP" unique_id=811983214]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 16.0
+max_value = 2048.0
+step = 16.0
+value = 512.0
+
+[node name="MaxSPPValLabel" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxMaxSPP" unique_id=239892701]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "512"
+
+[node name="HBoxSoftness" type="HBoxContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox" unique_id=455185740]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxSoftness" unique_id=1260813249]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "Sun Softness:"
+
+[node name="SoftnessSlider" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxSoftness" unique_id=1160242029]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 0.4
+step = 0.01
+value = 0.2
+
+[node name="SoftnessValLabel" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ControlsVBox/HBoxSoftness" unique_id=2003411141]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "0.20"
+
+[node name="HSeparatorBottom" type="HSeparator" parent="UI/PanelContainer/MarginContainer/VBoxContainer" unique_id=569219745]
+layout_mode = 2
+
+[node name="Instructions" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer" unique_id=1897959202]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
+theme_override_font_sizes/font_size = 10
+text = "• Flycam: RMB + WASD, Space/Ctrl | Shift: Boost | Scroll: Spd
+• Preset 1: Auto-Orbit | Left Drag: Orbit | F: Flycam | 1: Preset
+• H / Tab: Toggle UI HUD | F12: Save Screenshot"
